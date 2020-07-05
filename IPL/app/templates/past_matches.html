@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- <div class="container text-center">
+{{ table }}    
+</div>
+-->
+<div class="jumbotron text-center body-hero">
+    <table class="align-middle">
+    <thead>
+      <tr class="text-primary">
+        <th class="align-middle">Date</th>
+        <th class="align-middle">Home team</th>
+        <th class="align-middle">Visiting team</th>
+        <th class="align-middle">Venue</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for match in matches.items %}
+      <tr class="align-middle">
+        <td class="align-middle">{{ match.date.strftime('%d-%b %H:%M') }}</td>
+        <td class="align-middle">{{ match.team_a }}</td>
+        <td class="align-middle">{{ match.team_b }}</td>
+        <td class="align-middle">{{ match.venue }}</td> 
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+
+    {% for page_num in matches.iter_pages(left_edge=2, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        
+        {% if page_num == matches.page %}
+          <a class="btn btn-info" href="{{ url_for('matches.past_matches', page=page_num) }}"> {{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info" href="{{ url_for('matches.past_matches', page=page_num) }}"> {{ page_num }}</a>
+        {% endif %}
+
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}

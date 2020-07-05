@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if current_user.username == 'admin' %}
+<div class="container">
+  {% for mess in get_flashed_messages()  %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      {{mess}}
+    </div>
+  {% endfor %}
+</div>
+
+<div class="jumbotron text-center">
+    <h4 class="display-6">Add a match to DB</h4>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+
+      <div class="form-group">
+        {{ form.date.label }} {{ form.date }}
+      <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+      </script>
+      </div>
+
+      <div class="form-group">
+        {{ form.venue.label }} {{ form.venue }}
+      </div>
+
+      <div class="form-group">
+        {{ form.team_a.label }} {{ form.team_a }}
+      </div>
+
+      <div class="form-group">
+        {{ form.team_b.label }} {{ form.team_b }}
+      </div>
+
+      <div class="form-group">
+        {{ form.submit() }}
+      </div>
+    </form>
+</div>
+
+{% endif %}
+{% endblock %}

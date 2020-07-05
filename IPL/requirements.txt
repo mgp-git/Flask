@@ -1,0 +1,16 @@
+flask
+flask_table
+flask_migrate
+flask_login
+flask-WTF
+flask_sqlalchemy
+flask_restful
+flask_jwt
+flask_paginate
+flask_mail
+flask_pymongo
+flask_uploads
+flask_user
+werkzeug
+wtforms
+email_validator

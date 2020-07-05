@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  {% for mess in get_flashed_messages()  %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close" class="fade close">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      {{mess}}
+    </div>
+  {% endfor %}
+</div>
+<div class="jumbotron bg-info text-center text-dark">
+  <div class="container">
+    <h4 class="display-6 text-alert">REGISTRATION</h4>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        <!-- can use the form field with '()' [like done in username or submit] or without parentheses like form.email -->
+        <label for="userName" class="col-sm-2 col-form-label"> {{ form.username.label }}</label> {{ form.username()}}
+      </div>
+      <div class="form-group">
+        <label for="email" class="col-sm-2 col-form-label"> {{ form.email.label }}</label> {{ form.email }}
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-2 col-form-label"> {{ form.password.label }}</label> {{ form.password }}
+        <small id="passHelp" class="form-text text-muted">Keep some dummy password with 4-20 characters in length</small>
+      </div>
+      <div class="form-group">
+        <label for="confirmpass" class="col-sm-2 col-form-label"> {{ form.confirm.label }}</label> {{ form.confirm }}
+      </div>
+      <div class="form-group">
+        {{ form.submit(class="btn btn-primary mb-2") }}
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

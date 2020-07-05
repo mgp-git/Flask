@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+  <p class="lead text-center text-info"> Upcoming matches list, you cannot modify your selection once you submit!</p> 
+  <div class="jumbotron text-center">
+    <table>
+    <thead>
+      <tr class="text-primary">
+        <th>Date</th>
+        <th>Home team</th>
+        <th>Visiting team</th>
+        <th>Venue</th>
+        <th>Select team</th>
+        <th>Your selection</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for match in matches %}
+      <tr>
+        <!-- <td>{{ match[0].id }}</td> -->
+        <td>{{ match[0].date }}</td>
+        <td>{{ match[0].team_a}}</td>
+        <td>{{ match[0].team_b }}</td>
+        <td>{{ match[0].venue }}</td>
+        <td>
+            {% if match[1] != None %}
+              {{ match[1].team }}
+            {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    </table>
+  </div>
+</div>
+
+<!--
+<div class="Jumbotron">
+{{ table }}
+</div>
+-->
+
+<!-- 
+{% for match in results %}
+<br>
+{{ match.match_date }}
+{{ match.team_a }}
+{{ match.team_b }}
+{{ match.venue }}
+<br>
+{% endfor %}
+-->
+{% endblock %}
